@@ -1,7 +1,8 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const ticketAPI = require("../Lucky-draw-Grofers/Raffle tickets/ticketAPI");
-const eventAPI = require("../Lucky-draw-Grofers/luckyDrawEvent/eventAPI");
+const ticketAPI = require("./Raffle tickets/ticketAPI");
+const eventAPI = require("./luckyDrawEvent/nextEventAPI");
+const participateAPI = require("./luckyDrawEvent/participateAPI");
 require("dotenv").config();
 
 const app = express();
@@ -27,6 +28,8 @@ const port = 3000 || process.env.PORT;
 
 app.use(ticketAPI);
 app.use(eventAPI);
+app.use(participateAPI);
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}!`);
 });
