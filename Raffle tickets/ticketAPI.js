@@ -4,17 +4,19 @@ const User = require("../user/userModel");
 
 // NOTE: ADD NEW TICKET.
 
-router.get("/get-ticket", async (req, res) => {
+router.post("/get-ticket", async (req, res) => {
   const email = req.body.email;
   const username = req.body.username;
 
   try {
-    const user = await User.findOneAndUpdate(
-      { username: username, email: email },
-      { $inc: { tickets: 1 } }
-    );
-    console.log(user);
-    res.status(201).send("You have " + user.tickets + " raffle tickets");
+    const user = await User.findOne({ username: username, email: email });
+    if (!user) {
+      res.status(400).send("user not found");
+    } else {
+      await user.updateOne({ $inc: { tickets: 1 } });
+      const ticket = user.tickets + 1;
+      res.status(201).send("You have " + ticket + " raffle tickets");
+    }
   } catch (e) {
     res.status(400).send(e);
   }
