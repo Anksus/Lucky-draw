@@ -25,8 +25,8 @@ router.post("/get-ticket", async (req, res) => {
 // NOTE: TO ADD NEW USER.
 
 // const newUser = new User({
-//   username: "ankit",
-//   email: "ronaksusne@gmail.com",
+//   username: "naruto",
+//   email: "naruto@gmail.com",
 // });
 
 // newUser.save().then(() => {

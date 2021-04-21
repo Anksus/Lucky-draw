@@ -10,14 +10,18 @@ router.get("/next-event", async (req, res) => {
     if (!nextEvent) {
       res.send("There's no Lucky Draw Event");
     } else {
-      const date = nextEvent.startsAt.toString();
+      const date = nextEvent.startsAt.toLocaleDateString("en-gb", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      });
       const reward = nextEvent.reward;
       const time = nextEvent.startsAt.toLocaleTimeString();
 
       res.send({
         date,
         reward,
-        // time,
+        time,
       });
     }
   } catch (e) {
@@ -28,8 +32,8 @@ router.get("/next-event", async (req, res) => {
 // NOTE: ADD NEW EVENT.
 
 // const newEvent = new Event({
-//   eventName: "Grofers 7 Draw",
-//   startsAt: new Date("2022-01-21 20:39:20"),
+//   eventName: "Grofers 14 Draw",
+//   startsAt: new Date("2021-04-21 02:08:49"),
 //   duration: 360,
 //   reward: "iPad",
 // });

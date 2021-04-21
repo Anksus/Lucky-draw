@@ -1,7 +1,7 @@
 const express = require("express");
 const router = new express.Router();
 const User = require("../user/userModel");
-const Event = require("../luckyDrawEvent/eventModel");
+const Event = require("./eventModel");
 
 router.post("/participate", async (req, res) => {
   const email = req.body.email;

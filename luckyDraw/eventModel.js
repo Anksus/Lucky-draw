@@ -28,6 +28,14 @@ const eventSchema = new mongoose.Schema({
       },
     },
   ],
+  winner: {
+    type: String,
+    trim: true,
+  },
+  finished: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 const Event = mongoose.model("Event", eventSchema);
