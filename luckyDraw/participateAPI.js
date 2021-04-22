@@ -34,6 +34,14 @@ router.post("/participate", async (req, res) => {
             },
           }
         ).exec();
+        await Event.findOneAndUpdate(
+          { eventName: event },
+          {
+            $push: {
+              participants: { email },
+            },
+          }
+        );
         res.status(201).send("You participated successfully");
       } else {
         res
