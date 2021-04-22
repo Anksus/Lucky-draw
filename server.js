@@ -5,7 +5,6 @@ const eventAPI = require("./luckyDraw/nextEventAPI");
 const participateAPI = require("./luckyDraw/participateAPI");
 const lastWeekWinnerAPI = require("./luckyDraw/lastWeekWinnersAPI");
 const addEventAPI = require("./luckyDraw/addEventAPI");
-const getParticipants = require("./luckyDraw/getParticipants");
 require("dotenv").config();
 
 const app = express();
@@ -40,7 +39,6 @@ app.use(eventAPI);
 app.use(participateAPI);
 app.use(lastWeekWinnerAPI);
 app.use(addEventAPI);
-app.use(getParticipants);
 
 app.listen(port, () => {
   console.log(`App listening on port ${port}!`);
