@@ -2,7 +2,7 @@ const express = require("express");
 const router = new express.Router();
 const Event = require("./eventModel");
 const moment = require("moment");
-const computeWinner = require("./computeWinner");
+const computeWinner = require("../computeWinner/scheduleWinnerComputation");
 
 router.post("/add-event", async (req, res) => {
   const data = req.body;
