@@ -29,17 +29,4 @@ router.get("/next-event", async (req, res) => {
   }
 });
 
-// NOTE: ADD NEW EVENT.
-
-// const newEvent = new Event({
-//   eventName: "Grofers 14 Draw",
-//   startsAt: new Date("2021-04-21 02:08:49"),
-//   duration: 360,
-//   reward: "iPad",
-// });
-
-// newEvent.save().then(() => {
-//   console.log("new event saved");
-// });
-
 module.exports = router;
