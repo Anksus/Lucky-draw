@@ -2,8 +2,7 @@ const express = require("express");
 const router = new express.Router();
 const Event = require("./eventModel");
 
-// NOTE: API FOR GETTING NEXT EVENT
-
+//NOTE:: API for getting next event from the current time.
 router.get("/next-event", async (req, res) => {
   try {
     const nextEvent = await Event.findOne({ startsAt: { $gte: new Date() } });

@@ -3,6 +3,7 @@ const router = new express.Router();
 const User = require("../user/userModel");
 const Event = require("./eventModel");
 
+// NOTE:: API for participating in a event.
 router.post("/participate", async (req, res) => {
   const email = req.body.email;
   const event = req.body.event;

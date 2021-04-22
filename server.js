@@ -17,8 +17,8 @@ app.use(
   })
 );
 
+// Database connection
 const uri = process.env.ATLAS_URI;
-
 mongoose.connect(
   uri,
   {
@@ -34,6 +34,7 @@ mongoose.connect(
 
 const port = 3000 || process.env.PORT;
 
+// API routes`
 app.use(ticketAPI);
 app.use(eventAPI);
 app.use(participateAPI);

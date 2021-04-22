@@ -4,6 +4,7 @@ const Event = require("./eventModel");
 const moment = require("moment");
 const scheduleComputation = require("../computeWinner/scheduleWinnerComputation");
 
+//NOTE:: Add-event API and initializing scheduled computation job.
 router.post("/add-event", async (req, res) => {
   const data = req.body;
   const event = new Event({

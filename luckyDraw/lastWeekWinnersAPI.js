@@ -3,6 +3,7 @@ const router = new express.Router();
 const Event = require("./eventModel");
 const moment = require("moment");
 
+//NOTE:: API for getting winners from all the last week events.
 router.get("/last-week-winners", async (req, res) => {
   try {
     const data = await Event.find({

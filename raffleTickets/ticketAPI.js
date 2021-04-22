@@ -2,8 +2,7 @@ const express = require("express");
 const router = new express.Router();
 const User = require("../user/userModel");
 
-// NOTE: ADD NEW TICKET.
-
+// NOTE:: API for getting a Raffle ticket to participate in Lucky Draw Event.
 router.post("/get-ticket", async (req, res) => {
   const email = req.body.email;
   const username = req.body.username;
@@ -21,16 +20,5 @@ router.post("/get-ticket", async (req, res) => {
     res.status(400).send(e);
   }
 });
-
-// NOTE: TO ADD NEW USER.
-
-// const newUser = new User({
-//   username: "naruto",
-//   email: "naruto@gmail.com",
-// });
-
-// newUser.save().then(() => {
-//   console.log("yo saved");
-// });
 
 module.exports = router;
