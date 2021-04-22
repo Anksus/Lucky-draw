@@ -14,8 +14,14 @@ router.get("/last-week-winners", async (req, res) => {
     })
       .select({ winner: 1 })
       .exec();
-
-    console.log(data);
+    if (!data) {
+      res.send("No Events in the last week");
+    } else {
+      const winners = data.map((val) => {
+        return val.winner;
+      });
+      res.status(201).send(winners);
+    }
   } catch (e) {
     res.status(400).send(e);
   }

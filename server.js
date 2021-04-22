@@ -3,7 +3,8 @@ const mongoose = require("mongoose");
 const ticketAPI = require("./raffleTickets/ticketAPI");
 const eventAPI = require("./luckyDraw/nextEventAPI");
 const participateAPI = require("./luckyDraw/participateAPI");
-const lastWeekWinner = require("./luckyDraw/lastWeekWinners");
+const lastWeekWinnerAPI = require("./luckyDraw/lastWeekWinnersAPI");
+const addEventAPI = require("./luckyDraw/addEventAPI");
 require("dotenv").config();
 
 const app = express();
@@ -30,8 +31,9 @@ const port = 3000 || process.env.PORT;
 app.use(ticketAPI);
 app.use(eventAPI);
 app.use(participateAPI);
-app.use(lastWeekWinner);
+app.use(lastWeekWinnerAPI);
+app.use(addEventAPI);
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}!`);
+  console.log(`App listening on port ${port}!`);
 });
