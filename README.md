@@ -28,6 +28,7 @@ POST : http://localhost:9000/api/participate
 GET  : http://localhost:9000/api/last-week-winners
 POST : http://localhost:9000/api/add-event
 GET  : http://localhost:9000/api/users
+GET  : http://localhost:9000/api/running-event
 ```
 
 ## Get Raffle tickets
@@ -250,11 +251,11 @@ Content: { "Event already registered! Can't register again" }
 
 OR
 
-Code: 401 Bad Request
+Code: 401 Unauthorized
 Content: { error : "Bad request" }
 ```
 
-##
+## API for getting all the users
 
 - **URL:**
 
@@ -284,6 +285,46 @@ Content: emails
 - **Error Response:**
 
 ```
-Code: 401 Bad Request
+Code: 401 Unthorized
+Content: { error : "Bad request" }
+```
+
+## API to get the running event
+
+- **URL:**
+
+```
+http://localhost:9000/api/running-event
+```
+
+- **Method:** -
+
+```
+GET
+```
+
+- **URL PARAMS:**
+  NONE
+
+- **Success Response:**
+
+```
+Code:201
+Content: {{
+    "eventName": "test-1",
+    "reward": "Laptop",
+    "startsAt": "2021-04-23T09:39:00.000Z"
+}}
+```
+
+- **Error Response:**
+
+```
+Code: 400 Bad Request
+Content: { "There's no running Lucky Draw Event" }
+
+OR
+
+Code: 401 Unauthorized
 Content: { error : "Bad request" }
 ```

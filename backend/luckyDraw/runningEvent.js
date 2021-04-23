@@ -7,17 +7,18 @@ router.get("/running-event", async (req, res) => {
   try {
     const runningEvent = await Event.findOne({ running: true });
     if (!runningEvent) {
-      res.status(401).send("There's no running Lucky Draw Event");
+      res.status(400).send("There's no running Lucky Draw Event");
     } else {
       console.log(runningEvent);
       res.status(200).send({
         eventName: runningEvent.eventName,
         reward: runningEvent.reward,
-        startsAt: runningEvent.startsAt,
+        startsAt: runningEvent.startsAt.toLocaleDateString(),
+        time: runningEvent.startsAt.toLocaleTimeString(),
       });
     }
   } catch (e) {
-    res.status(400).send(e);
+    res.status(401).send(e);
   }
 });
 

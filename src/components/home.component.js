@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 class home extends Component {
   state = {
     date: "",
+    time: "",
     reward: "",
     eventName: "",
   };
@@ -15,6 +16,7 @@ class home extends Component {
       this.setState({
         date: res.data.startsAt,
         reward: res.data.reward,
+        time: res.data.time,
         eventName: res.data.eventName,
       });
     });
@@ -40,7 +42,7 @@ class home extends Component {
           </div>
         ) : (
           <div>
-            <h1>No event sorry</h1>
+            <h1>No running event, sorry</h1>
           </div>
         )}
       </div>
