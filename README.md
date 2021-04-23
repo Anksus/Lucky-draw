@@ -8,7 +8,7 @@ Backend system for organizing and participating in a Lucky Draw event. Users can
 NodeJs
 ExpressJs
 Mongodb
-RecatJs
+ReactJs
 ```
 
 ## Development

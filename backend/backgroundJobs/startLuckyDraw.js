@@ -14,7 +14,6 @@ const startLuckyDraw = (data) => {
       }
     ).then(() => {
       console.log("event started");
-      console.log(val);
     });
   });
 };

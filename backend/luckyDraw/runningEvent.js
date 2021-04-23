@@ -9,7 +9,6 @@ router.get("/running-event", async (req, res) => {
     if (!runningEvent) {
       res.status(400).send("There's no running Lucky Draw Event");
     } else {
-      console.log(runningEvent);
       res.status(200).send({
         eventName: runningEvent.eventName,
         reward: runningEvent.reward,
