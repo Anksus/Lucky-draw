@@ -7,7 +7,7 @@ router.get("/next-event", async (req, res) => {
   try {
     const nextEvent = await Event.findOne({ startsAt: { $gte: new Date() } });
     if (!nextEvent) {
-      res.send("There's no Lucky Draw Event");
+      res.status(401).send("There's no Lucky Draw Event");
     } else {
       const date = nextEvent.startsAt.toLocaleDateString("en-gb", {
         year: "numeric",
@@ -17,7 +17,7 @@ router.get("/next-event", async (req, res) => {
       const reward = nextEvent.reward;
       const time = nextEvent.startsAt.toLocaleTimeString();
       const eventName = nextEvent.eventName;
-      res.send({
+      res.status(200).send({
         date,
         reward,
         time,

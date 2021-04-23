@@ -13,7 +13,7 @@ router.post("/participate", async (req, res) => {
     if (!user) {
       res.status(400).send("user not found");
     } else if (user.tickets <= 0) {
-      res.status(201).send("You dont have enough tickets to participate");
+      res.status(400).send("You dont have enough tickets to participate");
     } else {
       var flag = 1;
       const participationList = user.luckyDrawParticipation;

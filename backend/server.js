@@ -22,7 +22,7 @@ app.use(
 );
 
 //NOTE:: Database connection
-const uri = process.env.ATLAS_URI;
+const uri = process.env.DB_URI;
 mongoose.connect(
   uri,
   {

@@ -9,9 +9,9 @@ router.get("/users", async (req, res) => {
     const emails = users.map((val) => {
       return val.email;
     });
-    res.send(emails);
+    res.status(200).send(emails);
   } catch (e) {
-    res.status(400).send(e);
+    res.status(401).send(e);
   }
 });
 

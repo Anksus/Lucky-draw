@@ -10,14 +10,14 @@ router.post("/get-ticket", async (req, res) => {
   try {
     const user = await User.findOne({ username: username, email: email });
     if (!user) {
-      res.status(400).send("user not found");
+      res.status(404).send("user not found");
     } else {
       await user.updateOne({ $inc: { tickets: 1 } });
       const ticket = user.tickets + 1;
       res.status(201).send("You have " + ticket + " raffle tickets");
     }
   } catch (e) {
-    res.status(400).send(e);
+    res.status(401).send(e);
   }
 });
 

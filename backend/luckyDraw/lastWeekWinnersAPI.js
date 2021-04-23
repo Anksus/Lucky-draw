@@ -15,15 +15,15 @@ router.get("/last-week-winners", async (req, res) => {
     });
 
     if (!data) {
-      res.send("No Events in the last week");
+      res.status(400).send("No Events in the last week");
     } else {
       const winners = data.map((val) => {
         return val.winner;
       });
-      res.status(201).send(winners);
+      res.status(200).send(winners);
     }
   } catch (e) {
-    res.status(400).send(e);
+    res.status(401).send(e);
   }
 });
 

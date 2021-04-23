@@ -1,70 +1,289 @@
-# Getting Started with Create React App
+# Lucky Draw
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Backend system for organizing and participating in a Lucky Draw event. Users can participate in a running event. After the event is over, winner is computed automatically by running a scheduled job, which computes the winner.
 
-## Available Scripts
+## Techstack
 
-In the project directory, you can run:
+```
+ExpressJs
+Mongodb
+```
 
-### `yarn start`
+## Development
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Do the following steps to run the project. Make sure Mongodb is running in the background.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- `$ npm install`
 
-### `yarn test`
+- make a .env file and store database URI string there.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- $ npm run dev
 
-### `yarn build`
+# API documentation for local development
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+POST : http://localhost:9000/api/get-ticket
+GET  : http://localhost:9000/api/next-event
+POST : http://localhost:9000/api/participate
+GET  : http://localhost:9000/api/last-week-winners
+POST : http://localhost:9000/api/add-event
+GET  : http://localhost:9000/api/users
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Get Raffle tickets
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- **URL:**
 
-### `yarn eject`
+```
+http://localhost:9000/api/get-ticket
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- **Method:** -
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```
+POST
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- **URL PARAMS:**
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```
+{
+    "username":"Jhon",
+    "email":"johnwick@gmail.com"
+}
+```
 
-## Learn More
+- **Success Response:**
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```
+Code:201
+Content: {You have 4 raffle tickets}
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- **Error Response:**
 
-### Code Splitting
+```
+Code: 404 NOT FOUND
+Content: { error : "User doesn't exist" }
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+OR
 
-### Analyzing the Bundle Size
+Code: 401 UNAUTHORIZED
+Content: { error : "You are unauthorized to make this request." }
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Get Next-Upcoming event
 
-### Making a Progressive Web App
+- **URL:**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+```
+http://localhost:9000/api/next-event
+```
 
-### Advanced Configuration
+- **Method:** -
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+```
+GET
+```
 
-### Deployment
+- **URL PARAMS:**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+```
+{
+    "date": "23 April 2021",
+    "reward": "iPhone",
+    "time": "6:00:00 am"
+}
+```
 
-### `yarn build` fails to minify
+- **Success Response:**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```
+Code:200
+Content: {
+    "date": "23 April 2021",
+    "reward": "lappy",
+    "time": "10:59:00 am",
+    "eventName": "test-event-9"
+}
+```
+
+- **Error Response:**
+
+```
+Code: 400 Bad Request
+Content: { error : "Bad request" }
+
+OR
+
+Code: 401 UNAUTHORIZED
+Content: { error : "There's no Lucky Draw Event" }
+```
+
+## Participate in an Event
+
+- **URL:**
+
+```
+http://localhost:9000/api/participate
+```
+
+- **Method:** -
+
+```
+POST
+```
+
+- **URL PARAMS:**
+
+```
+{
+    "email":"naruto@gmail.com",
+    "event":"test-event-8"
+}
+```
+
+- **Success Response:**
+
+```
+Code:201
+Content: {"You participated successfully"}
+```
+
+- **Error Response:**
+
+```
+Code: 400 Bad Request
+Content: { "You dont have enough tickets to participate" }
+
+OR
+
+Code: 400 Bad Request
+Content: { error : "Event not running right now" }
+
+OR
+
+Code: 400 Bad Request
+Content: { error : "You already participated, can't participate again" }
+```
+
+## Last week event's winner
+
+- **URL:**
+
+```
+http://localhost:9000/api/last-week-winners
+```
+
+- **Method:** -
+
+```
+GET
+```
+
+- **URL PARAMS:**
+
+```
+None
+```
+
+- **Success Response:**
+
+```
+Code:201
+Content: [
+    "eren@gmail.com"
+]
+```
+
+- **Error Response:**
+
+```
+Code: 400 Bad Request
+Content: { "No Events in the last week"" }
+
+OR
+
+
+Code: 401 Unauthorized
+Content: { error : "Bad request" }
+```
+
+## API to add events
+
+- **URL:**
+
+```
+http://localhost:9000/api/add-event
+```
+
+- **Method:** -
+
+```
+POST
+```
+
+- **URL PARAMS:**
+  duration (in mins)
+
+```
+{
+    "eventName": "test-event-9",
+    "startsAt" : "2021/04/23 10:59:00",
+    "duration": 1,
+    "reward" : "iPad"
+}
+```
+
+- **Success Response:**
+
+```
+Code:201
+Content: {"Event registered successfully"}
+```
+
+- **Error Response:**
+
+```
+Code: 400 Bad Request
+Content: { "Event already registered! Can't register again" }
+
+OR
+
+Code: 401 Bad Request
+Content: { error : "Bad request" }
+```
+
+##
+
+- **URL:**
+
+```
+http://localhost:9000/api/users
+```
+
+- **Method:** -
+
+```
+GET
+```
+
+- **URL PARAMS:**
+
+```
+None
+```
+
+- **Success Response:**
+
+```
+Code:201
+Content: emails
+```
+
+- **Error Response:**
+
+```
+Code: 401 Bad Request
+Content: { error : "Bad request" }
+```

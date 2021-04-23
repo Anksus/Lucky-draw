@@ -23,15 +23,15 @@ router.post("/add-event", async (req, res) => {
   try {
     const duplicateEvent = await Event.findOne({ eventName: data.eventName });
     if (duplicateEvent) {
-      res.status(201).send("Event already registered! Can't register again");
+      res.status(400).send("Event already registered! Can't register again");
     } else {
       await event.save();
       startLuckyDraw(computeData);
       scheduleComputation(computeData);
-      res.send("Event registered successfully");
+      res.status(201).send("Event registered successfully");
     }
   } catch (e) {
-    res.status(400).send(e);
+    res.status(401).send(e);
   }
 });
 
