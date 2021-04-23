@@ -17,11 +17,13 @@ router.get("/next-event", async (req, res) => {
       const reward = nextEvent.reward;
       const time = nextEvent.startsAt.toLocaleTimeString();
       const eventName = nextEvent.eventName;
+      const running = nextEvent.running;
       res.status(200).send({
         date,
         reward,
         time,
         eventName,
+        running,
       });
     }
   } catch (e) {

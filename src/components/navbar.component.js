@@ -8,8 +8,11 @@ class Navbar extends React.Component {
         <Link to="/" className="navbar-brand">
           Home
         </Link>
-        <Link to="/admin" className="navbar-brand">
-          admin
+        <Link to="/add-event" className="navbar-brand">
+          Add Event
+        </Link>
+        <Link to="/event-winner" className="navbar-brand">
+          Event Winners
         </Link>
       </nav>
     );

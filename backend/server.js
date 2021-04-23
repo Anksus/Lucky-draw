@@ -6,6 +6,7 @@ const participateAPI = require("./luckyDraw/participateAPI");
 const lastWeekWinnerAPI = require("./luckyDraw/lastWeekWinnersAPI");
 const addEventAPI = require("./luckyDraw/addEventAPI");
 const userAPI = require("./user/userAPI");
+const runningEvent = require("./luckyDraw/runningEvent");
 const cors = require("cors");
 
 require("dotenv").config();
@@ -45,6 +46,7 @@ app.use("/api", participateAPI);
 app.use("/api", lastWeekWinnerAPI);
 app.use("/api", addEventAPI);
 app.use("/api", userAPI);
+app.use("/api", runningEvent);
 
 app.listen(port, () => {
   console.log(`App listening on port ${port}!`);

@@ -18,7 +18,7 @@ class Participate extends Component {
       }
       console.log(this.state.emails);
     });
-    Axios.get("http://localhost:9000/api/next-event").then((res) => {
+    Axios.get("http://localhost:9000/api/running-event").then((res) => {
       console.log(res.data);
 
       this.setState({
@@ -40,7 +40,9 @@ class Participate extends Component {
         window.location = "/";
       })
       .catch((e) => {
-        alert("You cant participate");
+        alert(
+          "You cant participate. Either you dont have enough ticket or event isn't running"
+        );
       });
   };
 

@@ -11,14 +11,14 @@ router.get("/last-week-winners", async (req, res) => {
         $gte: moment().subtract(7, "days").toDate(),
         $lte: moment().toDate(),
       },
-      finished: true,
+      running: false,
     });
 
     if (!data) {
       res.status(400).send("No Events in the last week");
     } else {
       const winners = data.map((val) => {
-        return val.winner;
+        return { winner: val.winner, eventName: val.eventName };
       });
       res.status(200).send(winners);
     }

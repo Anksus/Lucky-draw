@@ -6,6 +6,7 @@ import Navbar from "./components/navbar.component";
 import editEvent from "./components/addEvent.component";
 import home from "./components/home.component";
 import participate from "./components/participate.component";
+import winners from "./components/winners.component";
 
 class App extends React.Component {
   render() {
@@ -14,9 +15,10 @@ class App extends React.Component {
         <Router>
           <Navbar />
           <br />
-          <Route path="/admin" component={editEvent} />
+          <Route path="/add-event" component={editEvent} />
           <Route path="/" exact component={home} />
           <Route path="/participate" component={participate} />
+          <Route path="/event-winner" component={winners} />
         </Router>
       </div>
     );
