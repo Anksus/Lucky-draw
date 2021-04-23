@@ -5,19 +5,30 @@ Backend system for organizing and participating in a Lucky Draw event. Users can
 ## Techstack
 
 ```
+NodeJs
 ExpressJs
 Mongodb
+RecatJs
 ```
 
 ## Development
 
-Do the following steps to run the project. Make sure Mongodb is running in the background.
+### For starting frontend React server
 
 - `$ npm install`
+- `$ npm start`
 
-- make a .env file and store database URI string there.
+* Visit `http://localhost:3000/` from the browser
 
-- $ npm run dev
+### For running express server
+
+- `$ cd backend/`
+
+* `$ npm install`
+
+* make a .env file and store database URI string there.
+
+* `$ npm run dev`
 
 # API documentation for local development
 
