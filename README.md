@@ -360,10 +360,15 @@ POST
 ```
 
 - **URL PARAMS:**
-  {
-  "username":"ankit",
-  "email":"ankit@gmail.com"
-  }
+
+```
+{
+
+"username":"ankit",
+"email":"ankit@gmail.com"
+
+}
+```
 
 - **Success Response:**
 
