@@ -40,6 +40,9 @@ app.use("/api", addUser);
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("/_frontend/build"));
 }
+app.get("*", (req, res) => {
+  res.sendFile("./client/build/index.html");
+});
 app.listen(port, () => {
   console.log(`App listening on port ${port}!`);
 });
