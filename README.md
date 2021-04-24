@@ -15,10 +15,12 @@ ReactJs
 
 ### For starting frontend React server
 
-- `$ npm install`
-- `$ npm start`
+- `$ cd frontend`
 
-* Visit `http://localhost:3000/` from the browser
+* `$ npm install`
+* `$ npm start`
+
+- Visit `http://localhost:3000/` from the browser
 
 ### For running express server
 
