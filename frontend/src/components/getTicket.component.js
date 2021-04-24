@@ -1,7 +1,7 @@
 import Axios from "axios";
 import React, { Component } from "react";
 
-class Participate extends Component {
+class GetTicket extends Component {
   state = {
     userData: [
       {
@@ -10,53 +10,46 @@ class Participate extends Component {
       },
     ],
     email: "",
-    eventName: "",
   };
 
   componentDidMount() {
     Axios.get("http://localhost:9000/api/users").then((res) => {
       if (res.data.length > 0) {
         this.setState({
-          email: res.data[0].email,
           userData: res.data,
+          email: res.data[0].email,
         });
       }
-      console.log(this.state.userData);
-    });
-    Axios.get("http://localhost:9000/api/running-event").then((res) => {
-      console.log(res.data);
-
-      this.setState({
-        eventName: res.data.eventName,
-      });
+      //   console.log(this.state.userData);
     });
   }
-  onchangeEmail = (e) => this.setState({ email: e.target.value });
+  onchangeEmail = (e) => {
+    this.setState({ email: e.target.value });
+    // console.log(this.state.email);
+  };
 
   onSubmit = (e) => {
     e.preventDefault();
-
-    const data = {
+    const email = {
       email: this.state.email,
-      event: this.state.eventName,
     };
-    Axios.post("http://localhost:9000/api/participate", data)
+    console.log(email);
+    Axios.post("http://localhost:9000/api/get-ticket", email)
       .then((t) => {
-        alert("participated successfully");
-        window.location = "/participate";
+        window.location = "/get-ticket";
       })
       .catch((e) => {
-        alert("You cant participate.");
+        alert("Can't add ticket");
       });
   };
 
   render() {
     return (
       <div>
-        <h3>Participate in {this.state.eventName}</h3>
+        <h3>You need Raffle ticket to participate. So, get a new one.</h3>
         <form onSubmit={this.onSubmit}>
           <div className="form-group">
-            <label>email </label>
+            <label>User </label>
             <select
               ref="userInput"
               required
@@ -65,10 +58,10 @@ class Participate extends Component {
               onChange={this.onchangeEmail}
               onBlur={this.onchangeEmail}
             >
-              {this.state.userData.map(function (val) {
+              {this.state.userData.map(function (userData) {
                 return (
-                  <option key={val.email} value={val.email}>
-                    {val.email} (available tickets - {val.tickets})
+                  <option key={userData.email} value={userData.email}>
+                    {userData.email} (available tickets : {userData.tickets})
                   </option>
                 );
               })}
@@ -77,7 +70,7 @@ class Participate extends Component {
           <div className="form-group">
             <input
               type="submit"
-              value="Participate"
+              value="Get ticket"
               className="btn btn-primary"
             />
           </div>
@@ -87,4 +80,4 @@ class Participate extends Component {
   }
 }
 
-export default Participate;
+export default GetTicket;

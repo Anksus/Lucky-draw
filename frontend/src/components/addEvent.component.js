@@ -49,7 +49,10 @@ class addEvent extends Component {
             />
           </div>{" "}
           <div className="form-group">
-            <label>Date and Timing (YYYY/MM/DD HH:MM:SS) </label>
+            <label>
+              Date and Timing (YYYY/MM/DD HH:MM:SS) Note - Add event, which will
+              start in future.{" "}
+            </label>
             <input
               type="text"
               required
