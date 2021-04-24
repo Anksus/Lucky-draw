@@ -21,7 +21,7 @@ app.use(
   })
 );
 
-const port = 9000 || process.env.PORT;
+const port = 8080 || process.env.PORT;
 
 //NOTE:: API routes
 app.use("/api", ticketAPI);
@@ -33,6 +33,9 @@ app.use("/api", userAPI);
 app.use("/api", runningEvent);
 app.use("/api", addUser);
 
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("/_frontend/build"));
+}
 app.listen(port, () => {
   console.log(`App listening on port ${port}!`);
 });
