@@ -27,7 +27,6 @@ class addEvent extends Component {
     Axios.post("http://localhost:9000/api/add-event", data).then((t) =>
       console.log(t.data)
     );
-    console.log(data);
 
     window.location = "/";
   };

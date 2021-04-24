@@ -34,10 +34,11 @@ ReactJs
 
 ```
 POST : http://localhost:9000/api/get-ticket
-GET  : http://localhost:9000/api/next-event
+POST : http://localhost:9000/api/add-user
 POST : http://localhost:9000/api/participate
-GET  : http://localhost:9000/api/last-week-winners
 POST : http://localhost:9000/api/add-event
+GET  : http://localhost:9000/api/next-event
+GET  : http://localhost:9000/api/last-week-winners
 GET  : http://localhost:9000/api/users
 GET  : http://localhost:9000/api/running-event
 ```
@@ -60,7 +61,6 @@ POST
 
 ```
 {
-    "username":"Jhon",
     "email":"johnwick@gmail.com"
 }
 ```
@@ -198,7 +198,7 @@ None
 - **Success Response:**
 
 ```
-Code:201
+Code:200
 Content: [
     {
         winner:"eren@gmail.com",
@@ -325,11 +325,12 @@ GET
 
 ```
 Code:201
-Content: {{
+Content: [{
     "eventName": "test-1",
     "reward": "Laptop",
-    "startsAt": "2021-04-23T09:39:00.000Z"
-}}
+    "startsAt": "25 April 2021",
+    "time": "2:30:00 am"
+}]
 ```
 
 - **Error Response:**
@@ -340,6 +341,40 @@ Content: { "There's no running Lucky Draw Event" }
 
 OR
 
+Code: 401 Unauthorized
+Content: { error : "Bad request" }
+```
+
+## API to add new user
+
+- **URL:**
+
+```
+http://localhost:9000/api/add-user
+```
+
+- **Method:** -
+
+```
+POST
+```
+
+- **URL PARAMS:**
+  {
+  "username":"ankit",
+  "email":"ankit@gmail.com"
+  }
+
+- **Success Response:**
+
+```
+Code:201
+Content: User saved
+```
+
+- **Error Response:**
+
+```
 Code: 401 Unauthorized
 Content: { error : "Bad request" }
 ```

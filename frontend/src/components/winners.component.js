@@ -21,7 +21,6 @@ class winners extends Component {
       this.setState({
         data: values,
       });
-      console.log(this.state.data);
     });
   }
   render() {

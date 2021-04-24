@@ -29,7 +29,6 @@ class home extends Component {
         timeNextEvent: res.data.time,
         eventNameNextEvent: res.data.eventName,
       });
-      console.log(this.state.dateNextEvent);
     });
   }
   render() {

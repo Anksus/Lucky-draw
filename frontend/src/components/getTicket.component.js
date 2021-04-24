@@ -20,12 +20,10 @@ class GetTicket extends Component {
           email: res.data[0].email,
         });
       }
-      //   console.log(this.state.userData);
     });
   }
   onchangeEmail = (e) => {
     this.setState({ email: e.target.value });
-    // console.log(this.state.email);
   };
 
   onSubmit = (e) => {
@@ -33,7 +31,6 @@ class GetTicket extends Component {
     const email = {
       email: this.state.email,
     };
-    console.log(email);
     Axios.post("http://localhost:9000/api/get-ticket", email)
       .then((t) => {
         window.location = "/get-ticket";

@@ -21,11 +21,8 @@ class Participate extends Component {
           userData: res.data,
         });
       }
-      console.log(this.state.userData);
     });
     Axios.get("http://localhost:9000/api/running-event").then((res) => {
-      console.log(res.data);
-
       this.setState({
         eventName: res.data.eventName,
       });
