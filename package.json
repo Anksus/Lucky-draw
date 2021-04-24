@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server.js",
     "build": "cd _frontend && npm run build",
-    "install-frontend": "cd _frontend && npm install",
+    "install-frontend": "cd client && npm install",
     "heroku-postbuild": "npm run install-frontend && npm run build"
   },
   "repository": {
