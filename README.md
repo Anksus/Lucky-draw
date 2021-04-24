@@ -69,7 +69,7 @@ POST
 
 ```
 Code:201
-Content: {You have 4 raffle tickets}
+Content: {ticket added successfully}
 ```
 
 - **Error Response:**
@@ -101,11 +101,7 @@ GET
 - **URL PARAMS:**
 
 ```
-{
-    "date": "23 April 2021",
-    "reward": "iPhone",
-    "time": "6:00:00 am"
-}
+None
 ```
 
 - **Success Response:**
@@ -204,7 +200,10 @@ None
 ```
 Code:201
 Content: [
-    "eren@gmail.com"
+    {
+        winner:"eren@gmail.com",
+        eventName: "Grofers event"
+    }
 ]
 ```
 
@@ -290,7 +289,12 @@ None
 
 ```
 Code:201
-Content: emails
+Content: [
+    "ronak@gmail.com",
+    "susne@gmail.com",
+    "eren@gmail.com",
+    "naruto@gmail.com"
+]
 ```
 
 - **Error Response:**

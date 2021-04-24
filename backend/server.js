@@ -1,5 +1,4 @@
 const express = require("express");
-const mongoose = require("mongoose");
 const ticketAPI = require("./raffleTickets/ticketAPI");
 const eventAPI = require("./luckyDraw/nextEventAPI");
 const participateAPI = require("./luckyDraw/participateAPI");
@@ -8,9 +7,7 @@ const addEventAPI = require("./luckyDraw/addEventAPI");
 const userAPI = require("./user/userAPI");
 const runningEvent = require("./luckyDraw/runningEvent");
 const cors = require("cors");
-
-require("dotenv").config();
-
+require("./db/db");
 const app = express();
 
 app.use(cors());
@@ -20,21 +17,6 @@ app.use(
   express.urlencoded({
     extended: true,
   })
-);
-
-//NOTE:: Database connection
-const uri = process.env.DB_URI;
-mongoose.connect(
-  uri,
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true,
-    useFindAndModify: false,
-  },
-  () => {
-    console.log("connection with the database is established");
-  }
 );
 
 const port = 9000 || process.env.PORT;
