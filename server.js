@@ -24,10 +24,6 @@ app.use(
 
 const port = process.env.PORT || 3000;
 
-app.get("/", (req, res) => {
-  res.send("hello");
-});
-
 //NOTE:: API routes
 app.use("/api", ticketAPI);
 app.use("/api", eventAPI);
@@ -38,12 +34,6 @@ app.use("/api", userAPI);
 app.use("/api", runningEvent);
 app.use("/api", addUser);
 
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "client", "build")));
-}
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "client", "build", "index.html"));
-});
 app.listen(port, () => {
   console.log(`App listening on port ${port}!`);
 });
