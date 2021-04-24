@@ -21,7 +21,7 @@ app.use(
   })
 );
 
-const port = 8000 || process.env.PORT;
+const port = process.env.PORT || 3000;
 
 //NOTE:: API routes
 app.use("/api", ticketAPI);
