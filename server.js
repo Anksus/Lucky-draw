@@ -1,4 +1,5 @@
 const express = require("express");
+const path = require("path");
 const ticketAPI = require("./raffleTickets/ticketAPI");
 const eventAPI = require("./luckyDraw/nextEventAPI");
 const participateAPI = require("./luckyDraw/participateAPI");
@@ -38,10 +39,10 @@ app.use("/api", runningEvent);
 app.use("/api", addUser);
 
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static("/_frontend/build"));
+  app.use(express.static(path.join(__dirname, "client", "build")));
 }
 app.get("*", (req, res) => {
-  res.sendFile("./client/build/index.html");
+  res.sendFile(path.join(__dirname, "client", "build", "index.html"));
 });
 app.listen(port, () => {
   console.log(`App listening on port ${port}!`);
