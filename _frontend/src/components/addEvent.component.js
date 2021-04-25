@@ -27,9 +27,9 @@ class addEvent extends Component {
     Axios.post(
       "https://lucky-draw-grofers.herokuapp.com/api/add-event",
       data
-    ).then((t) => console.log(t.data));
-
-    window.location = "/";
+    ).then((t) => {
+      window.location = "/";
+    });
   };
 
   render() {

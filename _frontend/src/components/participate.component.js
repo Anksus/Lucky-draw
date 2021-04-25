@@ -14,7 +14,7 @@ class Participate extends Component {
   };
 
   componentDidMount() {
-    Axios.get("https://lucky-draw-grofers.herokuapp.com/api/participate").then(
+    Axios.get("https://lucky-draw-grofers.herokuapp.com/api/users").then(
       (res) => {
         if (res.data.length > 0) {
           this.setState({
@@ -46,7 +46,7 @@ class Participate extends Component {
         window.location = "/participate";
       })
       .catch((e) => {
-        throw console.error(e);
+        alert("You can't participate");
       });
   };
 
