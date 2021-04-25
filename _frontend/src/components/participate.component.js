@@ -14,15 +14,19 @@ class Participate extends Component {
   };
 
   componentDidMount() {
-    Axios.get("http://localhost:9000/api/users").then((res) => {
-      if (res.data.length > 0) {
-        this.setState({
-          email: res.data[0].email,
-          userData: res.data,
-        });
+    Axios.get("https://lucky-draw-grofers.herokuapp.com/api/participate").then(
+      (res) => {
+        if (res.data.length > 0) {
+          this.setState({
+            email: res.data[0].email,
+            userData: res.data,
+          });
+        }
       }
-    });
-    Axios.get("http://localhost:9000/api/running-event").then((res) => {
+    );
+    Axios.get(
+      "https://lucky-draw-grofers.herokuapp.com/api/running-event"
+    ).then((res) => {
       this.setState({
         eventName: res.data.eventName,
       });
@@ -37,7 +41,7 @@ class Participate extends Component {
       email: this.state.email,
       event: this.state.eventName,
     };
-    Axios.post("http://localhost:9000/api/participate", data)
+    Axios.post("https://lucky-draw-grofers.herokuapp.com/api/participate", data)
       .then((t) => {
         alert("participated successfully");
         window.location = "/participate";

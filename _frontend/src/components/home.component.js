@@ -14,7 +14,9 @@ class home extends Component {
     eventNameNextEvent: "",
   };
   componentDidMount() {
-    Axios.get("http://localhost:9000/api/running-event").then((res) => {
+    Axios.get(
+      "https://lucky-draw-grofers.herokuapp.com/api/running-event"
+    ).then((res) => {
       this.setState({
         date: res.data.startsAt,
         reward: res.data.reward,
@@ -22,14 +24,16 @@ class home extends Component {
         eventName: res.data.eventName,
       });
     });
-    Axios.get("http://localhost:9000/api/next-event").then((res) => {
-      this.setState({
-        dateNextEvent: res.data.date,
-        rewardNextEvent: res.data.reward,
-        timeNextEvent: res.data.time,
-        eventNameNextEvent: res.data.eventName,
-      });
-    });
+    Axios.get("https://lucky-draw-grofers.herokuapp.com/api/next-event").then(
+      (res) => {
+        this.setState({
+          dateNextEvent: res.data.date,
+          rewardNextEvent: res.data.reward,
+          timeNextEvent: res.data.time,
+          eventNameNextEvent: res.data.eventName,
+        });
+      }
+    );
   }
   render() {
     const flag = this.state.date;

@@ -17,7 +17,7 @@ class addUser extends Component {
       email: this.state.email,
       username: this.state.username,
     };
-    Axios.post("http://localhost:9000/api/add-user", data)
+    Axios.post("https://lucky-draw-grofers.herokuapp.com/api/add-user", data)
       .then((t) => {
         alert("User added! ");
       })

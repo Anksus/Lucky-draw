@@ -11,7 +11,9 @@ class winners extends Component {
     ],
   };
   componentDidMount() {
-    Axios.get("http://localhost:9000/api/last-week-winners").then((res) => {
+    Axios.get(
+      "https://lucky-draw-grofers.herokuapp.com/api/last-week-winners"
+    ).then((res) => {
       const values = res.data.map((val) => {
         return {
           event: val.eventName,

@@ -13,14 +13,16 @@ class GetTicket extends Component {
   };
 
   componentDidMount() {
-    Axios.get("http://localhost:9000/api/users").then((res) => {
-      if (res.data.length > 0) {
-        this.setState({
-          userData: res.data,
-          email: res.data[0].email,
-        });
+    Axios.get("https://lucky-draw-grofers.herokuapp.com/api/users").then(
+      (res) => {
+        if (res.data.length > 0) {
+          this.setState({
+            userData: res.data,
+            email: res.data[0].email,
+          });
+        }
       }
-    });
+    );
   }
   onchangeEmail = (e) => {
     this.setState({ email: e.target.value });
@@ -31,7 +33,7 @@ class GetTicket extends Component {
     const email = {
       email: this.state.email,
     };
-    Axios.post("http://localhost:9000/api/get-ticket", email)
+    Axios.post("https://lucky-draw-grofers.herokuapp.com/api/get-ticket", email)
       .then((t) => {
         window.location = "/get-ticket";
       })
