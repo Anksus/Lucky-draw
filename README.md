@@ -11,6 +11,11 @@ Mongodb
 ReactJs
 ```
 
+## Deployed links
+
+- **Website** : https://lucky-draw-grofers.netlify.app/
+- **Web API** : https://lucky-draw-grofers.herokuapp.com/
+
 ## Development
 
 ### For starting frontend React server
