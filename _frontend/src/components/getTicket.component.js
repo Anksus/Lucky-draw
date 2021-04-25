@@ -35,7 +35,7 @@ class GetTicket extends Component {
     };
     Axios.post("https://lucky-draw-grofers.herokuapp.com/api/get-ticket", email)
       .then((t) => {
-        window.location = "/get-ticket";
+        window.location = "/";
       })
       .catch((e) => {
         alert("Can't add ticket");
