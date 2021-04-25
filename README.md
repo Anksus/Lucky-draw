@@ -20,7 +20,7 @@ ReactJs
 
 ### For starting frontend React server
 
-- `$ cd frontend`
+- `$ cd _frontend`
 
 * `$ npm install`
 * `$ npm start`
@@ -29,7 +29,7 @@ ReactJs
 
 ### For running express server
 
-- `$ cd backend/`
+from the root directory
 
 * `$ npm install`
 
