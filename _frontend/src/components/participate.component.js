@@ -43,7 +43,7 @@ class Participate extends Component {
     };
     Axios.post("https://lucky-draw-grofers.herokuapp.com/api/participate", data)
       .then((t) => {
-        window.location = "/participate";
+        window.location = "/";
       })
       .catch((e) => {
         alert("You can't participate");
